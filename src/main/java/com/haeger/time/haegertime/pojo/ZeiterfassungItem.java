@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.haeger.time.haegertime.pojo;
 
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 
@@ -12,6 +9,8 @@ import java.util.Date;
  *
  * @author Andreas
  */
+
+@XmlRootElement
 public class ZeiterfassungItem {
     
     private String mitarbeiterName;
