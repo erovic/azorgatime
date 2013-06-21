@@ -3,6 +3,8 @@ package com.haeger.time.haegertime.daoimpl.xml;
 import com.haeger.time.haegertime.dao.KategorieDAO;
 import com.haeger.time.haegertime.pojo.Kategorie;
 import java.util.ArrayList;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 
 /**
  *
@@ -13,8 +15,33 @@ import java.util.ArrayList;
  */
 public class KategorieDAOImpl implements KategorieDAO{
 
+    /**
+     * 
+     * Speichert Kategorie-Objekt in XML-Datei
+     * 
+     * @param kategorie 
+     */
     public void save(Kategorie kategorie) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        try{
+            
+            JAXBContext context = JAXBContext.newInstance(Kategorie.class);
+            
+            Marshaller m = context.createMarshaller();
+            
+            m.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            
+            /**
+             * Fuer Testzwecke auf die Konsole schreiben
+             */
+            m.marshal(kategorie, System.out);
+            
+        }catch(Exception e){
+            
+            e.printStackTrace();
+            
+        }
+        
     }
 
     public void update(Kategorie kategorie) {

@@ -1,7 +1,10 @@
 
 package com.haeger.time.haegertime.pojo;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
+
 
 /**
  * Diese Klasse speichert die verschiedenen Kategorien, die ein
@@ -13,6 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Kategorie {
     
+    @XmlElement(required=true)
     private String kategorieName;
     
     public String getKategorieName(){
@@ -21,6 +25,13 @@ public class Kategorie {
     
     public Kategorie(String kategorieName){
         this.kategorieName = kategorieName;
+    }
+    
+    /**
+     * Default Konstruktor fuer JAXB
+     */
+    public Kategorie(){
+        
     }
     
 }
