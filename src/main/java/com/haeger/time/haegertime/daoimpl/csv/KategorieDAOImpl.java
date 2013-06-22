@@ -6,13 +6,8 @@ package com.haeger.time.haegertime.daoimpl.csv;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
-import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
-import au.com.bytecode.opencsv.bean.CsvToBean;
 import com.haeger.time.haegertime.dao.KategorieDAO;
 import com.haeger.time.haegertime.pojo.Kategorie;
-
-import java.io.File;
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
