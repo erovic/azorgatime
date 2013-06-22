@@ -6,10 +6,13 @@ package com.haeger.time.haegertime.daoimpl.csv;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
+import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
+import au.com.bytecode.opencsv.bean.CsvToBean;
 import com.haeger.time.haegertime.dao.KategorieDAO;
 import com.haeger.time.haegertime.pojo.Kategorie;
-import com.sun.org.apache.bcel.internal.generic.F2D;
-import java.io.FileNotFoundException;
+
+import java.io.File;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -28,21 +31,13 @@ public class KategorieDAOImpl implements KategorieDAO{
        
         try{
             //todo -> Properties!
-            String csv = "d:\\output.csv";
+            String csv = "d:\\kategorie.csv";
             
-            CSVWriter writer = new CSVWriter(new FileWriter(csv));
+            CSVWriter writer = new CSVWriter(new FileWriter(csv, true), ';');
+               
+            String[] data = kategorie.getKategorieName().split(";");
             
-            List<String[]> data = new ArrayList<String[]>();
-            
-            for(Kategorie kat : getAll()){
-                
-                data.add(new String[]{kat.getKategorieName()});
-                
-            }
-            
-            data.add(new String[]{kategorie.getKategorieName()});
-            
-            writer.writeAll(data);
+            writer.writeNext(data);
             
             writer.close();
                         
@@ -81,10 +76,9 @@ public class KategorieDAOImpl implements KategorieDAO{
         
         try{
         
-            String [] row = null;
-            
+            String[] row = null;
             //todo -> Properties!
-            String csv = "d:\\output.csv";
+            String csv = "d:\\kategorie.csv";
             
             CSVReader reader = new CSVReader(new FileReader(csv));
             
@@ -92,12 +86,13 @@ public class KategorieDAOImpl implements KategorieDAO{
             
             for(Object object : content){
                 
-                Kategorie kat = new Kategorie(object.toString());
+                row = (String[]) object;
+                
+                Kategorie kat = new Kategorie(row[0]);
                 
                 result.add(kat);
-                
             }
-        
+      
         }catch(Exception e){
         
             e.printStackTrace();

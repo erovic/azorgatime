@@ -4,7 +4,6 @@ import com.haeger.time.haegertime.dao.KategorieDAO;
 import com.haeger.time.haegertime.daoimpl.csv.KategorieDAOImpl;
 import com.haeger.time.haegertime.pojo.Kategorie;
 import java.util.ArrayList;
-import java.util.List;
 import junit.framework.TestCase;
 
 /**
@@ -59,16 +58,31 @@ public class KategorieTest extends TestCase {
               
         Kategorie kat2 = new Kategorie("Feedback2");
         
+        Kategorie kat3 = new Kategorie("Feedback3");
+        
         ArrayList<Kategorie> liste = new ArrayList<Kategorie>();
         
         liste.add(kat1);
         
         liste.add(kat2);
         
+        liste.add(kat3);
+
         KategorieDAO kdao = new KategorieDAOImpl();
         
         kdao.save(liste);
+            
+    }
+    
+ /**
+  * Pruefung ob mehr als 0 Elemente in CSV-Datei vorhanden sind
+  * 
+  */   
+    public void testKategorieGetAll(){
         
+        KategorieDAO kdao = new KategorieDAOImpl();
+        
+        assertTrue(kdao.getAll().size() > 0);
         
     }
 }
