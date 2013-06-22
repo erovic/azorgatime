@@ -1,4 +1,4 @@
-package com.haeger.time.haegertime.test.pojo;
+package com.haeger.time.haegertime.test.pojo.xml;
 
 import com.haeger.time.haegertime.dao.ZeiterfassungItemDAO;
 import com.haeger.time.haegertime.daoimpl.xml.ZeiterfassungItemDAOImpl;

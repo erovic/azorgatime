@@ -1,14 +1,15 @@
-package com.haeger.time.haegertime.test.pojo;
-
+package com.haeger.time.haegertime.pojo.csv;
 
 import com.haeger.time.haegertime.dao.KategorieDAO;
-import com.haeger.time.haegertime.daoimpl.xml.KategorieDAOImpl;
+import com.haeger.time.haegertime.daoimpl.csv.KategorieDAOImpl;
 import com.haeger.time.haegertime.pojo.Kategorie;
+import java.util.ArrayList;
+import java.util.List;
 import junit.framework.TestCase;
 
 /**
  *
- * Komponententest fuer die Kategorie-Klasse
+ * Komponententest fuer die Kategorie-Klasse mit CSV-Mapping
  * 
  * @author Andreas
  */
@@ -34,7 +35,7 @@ public class KategorieTest extends TestCase {
     }
     
     /**
-     * Dieser Test prueft das Serialisieren mit JAXB in ein XML-Format
+     * Dieser Test prueft das Serialisieren in das CSV-Format
      */
     public void testKategorieSerialize(){
         
@@ -42,7 +43,32 @@ public class KategorieTest extends TestCase {
         
         KategorieDAO kdao = new KategorieDAOImpl();
         
-        kdao.save(kat1);
+        //kdao.save(kat1);
+        
+    }
+    
+    /**
+     * 
+     * Dieser Test prueft das Serialisieren mehrerer Objekte in das
+     * CSV-Format 
+     * 
+     */
+    public void testKategorieSerialize2(){
+
+        Kategorie kat1 = new Kategorie("Feedback");
+              
+        Kategorie kat2 = new Kategorie("Feedback2");
+        
+        ArrayList<Kategorie> liste = new ArrayList<Kategorie>();
+        
+        liste.add(kat1);
+        
+        liste.add(kat2);
+        
+        KategorieDAO kdao = new KategorieDAOImpl();
+        
+        kdao.save(liste);
+        
         
     }
 }

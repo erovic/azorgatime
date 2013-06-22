@@ -36,5 +36,9 @@ public class KategorieDAOImpl implements KategorieDAO {
     public ArrayList<Kategorie> getAll() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    public void save(ArrayList<Kategorie> kategorien) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
