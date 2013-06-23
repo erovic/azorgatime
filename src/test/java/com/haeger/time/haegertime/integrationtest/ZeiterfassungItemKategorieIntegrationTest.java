@@ -21,10 +21,5 @@ public class ZeiterfassungItemKategorieIntegrationTest extends TestCase {
         super.setUp();
     }
     
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
-    }
-    // TODO add test methods here. The name must begin with 'test'. For example:
-    // public void testHello() {}
+
 }
