@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import org.springframework.stereotype.Service;
 
 /**
  *
@@ -20,6 +21,8 @@ import java.util.Date;
  * 
  * @author andreas
  */
+
+@Service
 public class ZeiterfassungDAOImpl implements ZeiterfassungItemDAO{
 
     public void save(ZeiterfassungItem item) {

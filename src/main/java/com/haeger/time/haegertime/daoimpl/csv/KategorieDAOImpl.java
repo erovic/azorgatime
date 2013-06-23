@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
@@ -20,6 +21,8 @@ import java.util.List;
  * 
  * @author Andreas
  */
+
+@Service
 public class KategorieDAOImpl implements KategorieDAO{
 
     public void save(Kategorie kategorie) {
