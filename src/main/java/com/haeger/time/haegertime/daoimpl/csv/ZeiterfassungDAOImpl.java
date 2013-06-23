@@ -35,9 +35,10 @@ public class ZeiterfassungDAOImpl implements ZeiterfassungItemDAO{
                                             item.getTaetigkeit(),
                                             df.format(item.getDatum()),
                                             String.valueOf(item.getDauer()),
-                                            item.getKategorie().getKategorieName()};
-                
-            
+                                            item.getKategorie().getKategorieName(),
+                                            item.getMonat(),
+                                            item.getJahr()};
+                            
             writer.writeNext(data);
             
             writer.close();
