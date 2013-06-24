@@ -1,7 +1,8 @@
 
 package com.haeger.time.haegertime.integrationtest;
 
-import com.haeger.time.haegertime.model.Model;
+
+import com.haeger.time.haegertime.mymodel.MyModel;
 import junit.framework.TestCase;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -37,7 +38,7 @@ public class SpringTest extends TestCase {
         
         BeanFactory factory = context;
         
-        Model model = (Model) factory.getBean("model");
+        MyModel model = (MyModel) factory.getBean("model");
         
         //model.testModel();
         
