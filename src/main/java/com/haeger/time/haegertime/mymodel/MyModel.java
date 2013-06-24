@@ -36,5 +36,14 @@ public class MyModel {
         this.itemdao = itemdao;
         
     }
+
+    /**
+     * 
+     * Methode nur fuer Testzwecke
+     * 
+     */
+    public void testModel() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
     
 }
