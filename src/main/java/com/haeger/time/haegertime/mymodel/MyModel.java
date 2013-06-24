@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 /**
 *
 * Model - interagiert irgendwo zwischen GUI und der per Spring
-* injizierten DAO
+* injizierten DAO (also eigentlich eher eine Fassade)
 *
 * @author andreas
 */
