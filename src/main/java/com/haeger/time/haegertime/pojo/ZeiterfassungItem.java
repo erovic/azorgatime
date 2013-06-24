@@ -24,16 +24,14 @@ public class ZeiterfassungItem {
     
     private Kategorie kategorie;
     
-    private String monat;
-    
-    private String jahr;
+    private ItemZeitraum zeitraum = new ItemZeitraum();
     
     public String getMonat(){
-        return monat;
+        return zeitraum.getMonat();
     }
     
     public String getJahr(){
-        return jahr;
+        return zeitraum.getJahr();
     }
 
     public Kategorie getKategorie() {
@@ -64,11 +62,11 @@ public class ZeiterfassungItem {
         
         fmt.applyPattern("MMMM");
         
-        this.monat = fmt.format(datum);
+        this.zeitraum.setMonat(fmt.format(datum));
         
         fmt.applyPattern("yyyy");
         
-        this.jahr = fmt.format(datum);
+        this.zeitraum.setJahr( fmt.format(datum));
         
     }
 

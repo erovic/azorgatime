@@ -39,7 +39,7 @@ public class SpringTest extends TestCase {
         
         Model model = (Model) factory.getBean("model");
         
-        model.testModel();
+        //model.testModel();
         
     }
     
