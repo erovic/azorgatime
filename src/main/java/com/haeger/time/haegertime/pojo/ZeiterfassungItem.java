@@ -1,7 +1,12 @@
 package com.haeger.time.haegertime.pojo;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -12,19 +17,25 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
-public class ZeiterfassungItem {
+@Entity
+public class ZeiterfassungItem implements Serializable {
     
     private String mitarbeiterName;
     
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date datum;
     
     private String taetigkeit;
     
     private double dauer;
     
+    @OneToOne
     private Kategorie kategorie;
     
+    @OneToOne
     private ItemZeitraum zeitraum = new ItemZeitraum();
+    @Id
+    private Long id;
     
     public String getMonat(){
         return zeitraum.getMonat();
@@ -89,6 +100,14 @@ public class ZeiterfassungItem {
    public ZeiterfassungItem(){
        
    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
   
     
 }

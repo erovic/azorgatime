@@ -1,5 +1,8 @@
 package com.haeger.time.haegertime.pojo;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * Diese Klasse speichert statistische Zeitangaben zu einzelnen Items
@@ -7,7 +10,10 @@ package com.haeger.time.haegertime.pojo;
  * 
  * @author Andreas
  */
+@Entity
 public class ItemZeitraum {
+    @Id
+    private Long id;
     
     private String monat;
 
@@ -32,6 +38,14 @@ public class ItemZeitraum {
 
     public void setJahr(String jahr) {
         this.jahr = jahr;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     
