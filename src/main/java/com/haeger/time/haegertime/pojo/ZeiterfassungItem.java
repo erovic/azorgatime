@@ -2,7 +2,9 @@ package com.haeger.time.haegertime.pojo;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -78,6 +80,11 @@ public class ZeiterfassungItem implements Serializable {
         fmt.applyPattern("yyyy");
         
         this.zeitraum.setJahr( fmt.format(datum));
+        
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(datum);
+        
+        this.zeitraum.setKalenderwoche(calendar.get(Calendar.WEEK_OF_YEAR));
         
     }
 

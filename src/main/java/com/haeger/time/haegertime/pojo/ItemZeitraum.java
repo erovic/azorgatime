@@ -17,7 +17,15 @@ public class ItemZeitraum {
     
     private String monat;
 
-    
+    private int kalenderwoche;
+
+    public int getKalenderwoche() {
+        return kalenderwoche;
+    }
+
+    public void setKalenderwoche(int kalenderwoche) {
+        this.kalenderwoche = kalenderwoche;
+    }
             
     private String jahr;
     
@@ -47,6 +55,8 @@ public class ItemZeitraum {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 
     
     
