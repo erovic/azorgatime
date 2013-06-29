@@ -1,45 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-  xmlns:context="http://www.springframework.org/schema/context"
-  xsi:schemaLocation="
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/jdbc
+	http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+	http://www.springframework.org/schema/data/jpa
+	http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.1.xsd">
  
-   <context:component-scan base-package="com.haeger.time.haegertime.model" />
-    
-   <context:component-scan base-package="com.haeger.time.haegertime.daoimpl.csv" /> 
-   
-   
-   	<!-- Database connection -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/demo" />
-		<property name="user" value="root" /> <!-- Set your db user here -->
-		<property name="password" value="polka" /> <!-- Set your db password here -->
-	</bean>
-
-	<!-- Hibernate is used as JPA vendor-->
-	<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-		<property name="generateDdl" value="true" /> <!-- Automatically create tables for the entity classes. Don't do this in production! -->
-		<property name="showSql" value="false" /> <!-- Set this to true for analyzing SQL queries -->
-	</bean>
-
-	<!-- Entity manager -->
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
-		<property name="packagesToScan" value="jparepo" /> <!-- Defines where the entity classes are placed -->
-	</bean>
-
-	<!-- Configure transaction management -->
+	 
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+ 	
+	<!-- Activate Spring Data JPA repository support -->
+	<jpa:repositories base-package="com.haeger.time.haegertime.daoimpl.oracle.repository" repository-impl-postfix="todo" factory-class="todo" />
+	
+	<!-- Declare a datasource that has pooling capabilities-->	
+	<bean id="jpaDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close"
+		p:driverClass="oracle.jdbc.driver.OracleDriver"
+		p:jdbcUrl="jdbc:oracle:thin:@<ip-address>:1521"
+		p:user="username"
+		p:password="passwords"
+		p:acquireIncrement="5"
+		p:idleConnectionTestPeriod="60"
+		p:maxPoolSize="100"
+		p:maxStatements="50"
+		p:minPoolSize="10" />
+ 
+	<!-- Declare a JPA entityManagerFactory -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+	p:persistenceXmlLocation="./META-INF/persistence.xml"
+	p:dataSource-ref="jpaDataSource"
+	p:jpaVendorAdapter-ref="hibernateVendor"/>
+	 
+	<!-- Specify our ORM vendor -->
+	<bean id="hibernateVendor" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+	p:showSql="true"/>
+ 
+	<!-- Declare a transaction manager-->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="dataSource" ref="jpaDataSource"/>
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<!-- Defines where repositories are placed -->
-	<jpa:repositories base-package="com.haeger.time.haegertime.daoimpl.oracle.repository" />
-   
+	
 </beans>
