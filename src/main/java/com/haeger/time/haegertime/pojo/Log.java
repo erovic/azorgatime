@@ -1,6 +1,7 @@
 
 package com.haeger.time.haegertime.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import javax.persistence.Temporal;
  */
 
 @Entity
-public class Log {
+public class Log implements Serializable{
     
     @Id
     private Long id;
