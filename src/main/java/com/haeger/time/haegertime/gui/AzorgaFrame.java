@@ -75,6 +75,11 @@ public class AzorgaFrame extends java.awt.Frame {
         jPanel1.add(textfieldDauer, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 40, -1));
 
         buttonSave.setText("Speichern");
+        buttonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSaveActionPerformed(evt);
+            }
+        });
         jPanel1.add(buttonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 80, -1));
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -88,6 +93,10 @@ public class AzorgaFrame extends java.awt.Frame {
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
         System.exit(0);
     }//GEN-LAST:event_exitForm
+
+    private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonSaveActionPerformed
 
     /**
      * @param args the command line arguments
