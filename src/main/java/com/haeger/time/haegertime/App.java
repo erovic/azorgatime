@@ -1,6 +1,8 @@
 package com.haeger.time.haegertime;
 
-import com.haeger.time.haegertime.gui.TimeFrame;
+import com.haeger.time.haegertime.gui.AzorgaFrame;
+
+
 
 /**
  * Hello world!
@@ -10,7 +12,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        TimeFrame tf = new TimeFrame();
+        AzorgaFrame tf = new AzorgaFrame();
         
         tf.setVisible(true);
     }
