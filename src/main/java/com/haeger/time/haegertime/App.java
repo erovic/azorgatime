@@ -1,6 +1,6 @@
 package com.haeger.time.haegertime;
 
-import com.haeger.time.haegertime.gui.AzorgaFrame;
+import com.haeger.time.haegertime.gui.swing.AzorgaFrame;
 
 
 

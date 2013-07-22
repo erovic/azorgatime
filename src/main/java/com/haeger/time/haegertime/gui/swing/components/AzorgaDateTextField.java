@@ -1,5 +1,5 @@
 
-package com.haeger.time.haegertime.gui.components;
+package com.haeger.time.haegertime.gui.swing.components;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

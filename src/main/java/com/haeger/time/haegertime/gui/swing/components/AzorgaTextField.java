@@ -1,4 +1,4 @@
-package com.haeger.time.haegertime.gui.components;
+package com.haeger.time.haegertime.gui.swing.components;
 
 import javax.swing.JTextField;
 
